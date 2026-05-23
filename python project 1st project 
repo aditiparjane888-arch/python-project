@@ -1,0 +1,118 @@
+
+
+𝘾𝙤𝙙𝙚
+
+# Student Record Management System
+
+students = {}
+
+# Add Student
+def add_student():
+    roll_no = input("Enter Roll Number: ")
+    name = input("Enter Student Name: ")
+    marks = input("Enter Marks: ")
+
+    students[roll_no] = {
+        "name": name,
+        "marks": marks
+    }
+
+    print("✅ Student Added Successfully!\n")
+
+
+# View Students
+def view_students():
+    if not students:
+        print("⚠ No Student Records Found!\n")
+
+    else:
+        print("\n📚 Student Records")
+        print("-" * 30)
+
+        for roll, details in students.items():
+            print(f"Roll No : {roll}")
+            print(f"Name    : {details['name']}")
+            print(f"Marks   : {details['marks']}")
+            print("-" * 30)
+
+
+# Search Student
+def search_student():
+    roll_no = input("Enter Roll Number to Search: ")
+
+    if roll_no in students:
+        details = students[roll_no]
+
+        print("\n✅ Student Found")
+        print(f"Name  : {details['name']}")
+        print(f"Marks : {details['marks']}")
+
+    else:
+        print("❌ Student Not Found!")
+
+
+# Update Student
+def update_student():
+    roll_no = input("Enter Roll Number to Update: ")
+
+    if roll_no in students:
+        name = input("Enter New Name: ")
+        marks = input("Enter New Marks: ")
+
+        students[roll_no] = {
+            "name": name,
+            "marks": marks
+        }
+
+        print("✅ Record Updated Successfully!")
+
+    else:
+        print("❌ Student Not Found!")
+
+
+# Delete Student
+def delete_student():
+    roll_no = input("Enter Roll Number to Delete: ")
+
+    if roll_no in students:
+        del students[roll_no]
+        print("✅ Record Deleted Successfully!")
+
+    else:
+        print("❌ Student Not Found!")
+
+
+# Main Menu
+while True:
+
+    print("\n====== Student Record Management System ======")
+    print("1. Add Student")
+    print("2. View Students")
+    print("3. Search Student")
+    print("4. Update Student")
+    print("5. Delete Student")
+    print("6. Exit")
+
+    choice = input("Enter Your Choice: ")
+
+    if choice == "1":
+        add_student()
+
+    elif choice == "2":
+        view_students()
+
+    elif choice == "3":
+        search_student()
+
+    elif choice == "4":
+        update_student()
+
+    elif choice == "5":
+        delete_student()
+
+    elif choice == "6":
+        print("🚀 Exiting Program...")
+        break
+
+    else:
+        print("❌ Invalid Choice! Try Again.")
